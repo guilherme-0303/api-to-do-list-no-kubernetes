@@ -13,3 +13,16 @@ Instrumentator().instrument(app).expose(app, '/metrics')
 
 # Setting up the routers
 app.include_router(todos.router)
+
+
+@app.get('/')
+def hello():
+    return {'message': 'Hello, World!'}
+
+@app.get('/health')
+def health():
+    return {'status': 'healthy'}
+
+@app.get('/ready')
+def ready():
+    return {'status': 'ready'}
