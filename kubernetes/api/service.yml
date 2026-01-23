@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: todos-service
+  namespace: api
+  labels:
+    app: todos
+  annotations:
+    metallb.io/loadBalancerIPs: 172.18.255.10
+spec:
+  type: LoadBalancer
+  selector:
+    app: todos
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
